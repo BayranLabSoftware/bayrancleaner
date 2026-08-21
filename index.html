@@ -66,27 +66,48 @@
 
   /* capitoli: una funzione per schermata, ognuna col colore della sua
      sezione nell'app */
-  .cap { min-height: 74vh; display: flex; flex-direction: column;
+  .cap { min-height: 92vh; display: flex; flex-direction: column;
          justify-content: center; align-items: center;
-         padding: 64px 24px; }
-  .cap .anello { width: 96px; height: 96px; border-radius: 30px;
+         padding: 70px 24px; }
+  .cap .anello { width: 72px; height: 72px; border-radius: 22px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 44px; margin-bottom: 26px;
+    font-size: 34px; margin-bottom: 20px;
     background: linear-gradient(160deg,
       color-mix(in srgb, var(--sc) 82%, #fff 14%),
       color-mix(in srgb, var(--sc) 70%, #000 20%));
-    box-shadow: 0 0 0 8px color-mix(in srgb, var(--sc) 16%, transparent),
-      0 18px 50px color-mix(in srgb, var(--sc) 45%, transparent); }
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--sc) 16%, transparent),
+      0 16px 44px color-mix(in srgb, var(--sc) 45%, transparent); }
   .cap h2 { font-size: clamp(28px, 5vw, 46px); font-weight: 800;
-    letter-spacing: -.8px; margin-bottom: 14px;
+    letter-spacing: -.8px; margin-bottom: 12px;
     background: linear-gradient(180deg, #fff,
       color-mix(in srgb, var(--sc) 55%, #fff 30%));
     -webkit-background-clip: text; background-clip: text; color: transparent; }
   .cap p { color: #b6c6d3; font-size: clamp(16px, 2.2vw, 19px);
-           max-width: 560px; }
-  .cap .filo { width: 54px; height: 4px; border-radius: 2px; margin-top: 26px;
-    background: color-mix(in srgb, var(--sc) 80%, #fff 10%);
-    box-shadow: 0 0 18px color-mix(in srgb, var(--sc) 70%, transparent); }
+           max-width: 620px; }
+  /* la schermata vera della sezione: entra in prospettiva e si raddrizza */
+  .cap .schermo { max-width: 1060px; width: 100%; margin-top: 38px;
+    perspective: 1400px; }
+  .cap .schermo img { width: 100%; display: block; border-radius: 14px;
+    box-shadow: 0 40px 100px rgba(0,0,0,.55),
+      0 0 60px color-mix(in srgb, var(--sc) 26%, transparent),
+      0 0 0 1px rgba(255,255,255,.08);
+    transform: rotateX(16deg) scale(.92) translateY(46px); opacity: 0;
+    transition: transform 1s cubic-bezier(.16,.8,.24,1), opacity .9s ease; }
+  .cap.qui .schermo img { transform: none; opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .cap .schermo img { transform: none; opacity: 1; transition: none; }
+  }
+
+  /* strumenti di contorno, in breve */
+  .extra { padding: 40px 24px 80px; }
+  .extra h2 { font-size: clamp(22px, 3.5vw, 30px); margin-bottom: 26px; }
+  .minis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+           gap: 16px; max-width: 900px; margin: 0 auto; }
+  .mini { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.08);
+          border-radius: 14px; padding: 24px 20px; }
+  .mini .em { font-size: 28px; display: block; margin-bottom: 10px; }
+  .mini b { display: block; margin-bottom: 5px; font-size: 16px; }
+  .mini span { color: #b6c6d3; font-size: 14.5px; }
 
   .onesta { padding: 90px 24px; }
   .onesta h2 { font-size: clamp(26px, 4.5vw, 40px); letter-spacing: -.6px; }
@@ -134,26 +155,31 @@
 
 <section class="cap su" style="--sc:#2e9e5b" data-amb="#2e9e5b">
   <div class="anello">🧹</div>
-  <h2>Pulizia mirata</h2>
+  <h2>Pulizia generale</h2>
   <p>Cache delle app, log, allegati di Mail, installer dimenticati, vecchi
   aggiornamenti di iPhone: ogni voce spiega cosa fa e quanto pesa.</p>
-  <div class="filo"></div>
+  <div class="schermo"><img src="img/sez-pulizia.jpg" loading="lazy"
+    alt="La sezione Pulizia generale di Bayran Cleaner"></div>
 </section>
 
 <section class="cap su" style="--sc:#7c5cbf" data-amb="#7c5cbf">
   <div class="anello">📦</div>
-  <h2>Disinstallazione completa</h2>
-  <p>Rimuove le app con tutti i loro dati nascosti, e trova i residui
-  di quelle già eliminate.</p>
-  <div class="filo"></div>
+  <h2>Applicazioni</h2>
+  <p>Disinstallazione completa, dati nascosti inclusi, e residui delle app
+  già eliminate. E quando c'è un aggiornamento, lo scarica dal canale
+  ufficiale del produttore, verifica la firma e installa. Un clic.</p>
+  <div class="schermo"><img src="img/sez-applicazioni.jpg" loading="lazy"
+    alt="La sezione Applicazioni di Bayran Cleaner"></div>
 </section>
 
-<section class="cap su" style="--sc:#c94f7c" data-amb="#c94f7c">
-  <div class="anello">🔄</div>
-  <h2>Aggiornamenti automatici</h2>
-  <p>Rileva le app da aggiornare, scarica dal canale ufficiale del
-  produttore, verifica la firma e installa. Un clic.</p>
-  <div class="filo"></div>
+<section class="cap su" style="--sc:#1f7aa8" data-amb="#1f7aa8">
+  <div class="anello">⚙️</div>
+  <h2>Sviluppo</h2>
+  <p>Cache dei compilatori, build intermedie, simulatori, node_modules
+  orfani: i gigabyte invisibili di chi sviluppa, spiegati e recuperabili
+  senza rischi.</p>
+  <div class="schermo"><img src="img/sez-sviluppo.jpg" loading="lazy"
+    alt="La sezione Sviluppo di Bayran Cleaner"></div>
 </section>
 
 <section class="cap su" style="--sc:#12a29a" data-amb="#12a29a">
@@ -161,15 +187,17 @@
   <h2>Duplicati veri</h2>
   <p>Confronto byte per byte: zero falsi positivi. Scegli tu quale copia
   tenere, gruppo per gruppo.</p>
-  <div class="filo"></div>
+  <div class="schermo"><img src="img/sez-duplicati.jpg" loading="lazy"
+    alt="La sezione Duplicati di Bayran Cleaner"></div>
 </section>
 
-<section class="cap su" style="--sc:#4778c4" data-amb="#4778c4">
-  <div class="anello">🗺️</div>
-  <h2>Mappa Disco</h2>
-  <p>Le cartelle ordinate per peso, esplorabili al clic, con misura
-  progressiva istantanea.</p>
-  <div class="filo"></div>
+<section class="cap su" style="--sc:#e0803a" data-amb="#e0803a">
+  <div class="anello">📄</div>
+  <h2>File grandi e vecchi</h2>
+  <p>I file più pesanti del disco e quelli dimenticati da mesi, subito
+  visibili. Solo segnalazione: nessuna rimozione automatica.</p>
+  <div class="schermo"><img src="img/sez-grandi.jpg" loading="lazy"
+    alt="La sezione File grandi e vecchi di Bayran Cleaner"></div>
 </section>
 
 <section class="cap su" style="--sc:#c05b8c" data-amb="#c05b8c">
@@ -177,24 +205,42 @@
   <h2>Privacy dei browser</h2>
   <p>Cronologia, cookie e cache di Safari, Chrome e Firefox.
   Password e moduli non vengono mai toccati.</p>
-  <div class="filo"></div>
+  <div class="schermo"><img src="img/sez-privacy.jpg" loading="lazy"
+    alt="La sezione Privacy di Bayran Cleaner"></div>
+</section>
+
+<section class="cap su" style="--sc:#4778c4" data-amb="#4778c4">
+  <div class="anello">🗺️</div>
+  <h2>Mappa Disco</h2>
+  <p>Le cartelle ordinate per peso, esplorabili al clic, con misura
+  progressiva istantanea.</p>
+  <div class="schermo"><img src="img/sez-mappa.jpg" loading="lazy"
+    alt="La Mappa Disco di Bayran Cleaner"></div>
 </section>
 
 <section class="cap su" style="--sc:#c7871a" data-amb="#c7871a">
   <div class="anello">⚡</div>
-  <h2>Avvio e manutenzione</h2>
-  <p>Gestisci le app che partono da sole e le attività di manutenzione
-  standard di macOS, spiegate una per una.</p>
-  <div class="filo"></div>
+  <h2>App di avvio</h2>
+  <p>Le app e i servizi che partono da soli all'accensione: disattivarli
+  velocizza l'avvio e alleggerisce la memoria, senza disinstallare nulla.</p>
+  <div class="schermo"><img src="img/sez-avvio.jpg" loading="lazy"
+    alt="La sezione App di avvio di Bayran Cleaner"></div>
 </section>
 
-<section class="cap su" style="--sc:#4a9cc4" data-amb="#4a9cc4">
-  <div class="anello">📊</div>
-  <h2>Monitor di sistema</h2>
-  <p>Processore, memoria, disco, rete e batteria nel menu della barra,
-  quando li vuoi tu.</p>
-  <div class="filo"></div>
-</section>
+<div class="extra su" data-amb="#4a9cc4">
+  <h2>E intorno, tutto il resto</h2>
+  <div class="minis">
+    <div class="mini"><span class="em">📊</span><b>Monitor di sistema</b>
+      <span>Processore, memoria, disco, rete e batteria nel menu della
+      barra, quando li vuoi tu.</span></div>
+    <div class="mini"><span class="em">🔧</span><b>Manutenzione</b>
+      <span>Le attività standard di macOS, spiegate una per una ed
+      eseguite solo su tua richiesta.</span></div>
+    <div class="mini"><span class="em">↩️</span><b>Registro</b>
+      <span>Ogni operazione è annotata e reversibile: la vecchia versione
+      di qualunque cosa resta nel Cestino.</span></div>
+  </div>
+</div>
 
 <div class="onesta su" data-amb="#41abd0">
   <h2>Il patto di onestà</h2>

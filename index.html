@@ -7,54 +7,113 @@
 <meta name="description" content="Bayran Cleaner libera spazio sul tuo Mac senza trucchi: tutto finisce nel Cestino, ogni operazione è reversibile e i numeri che vedi sono quelli veri. Gratuito.">
 <link rel="icon" href="img/logo.png">
 <style>
+  @property --amb { syntax: "<color>"; initial-value: #1f6f9c; inherits: true; }
   * { margin: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body { font: 16px/1.6 -apple-system, "SF Pro Text", "Segoe UI", sans-serif;
-         color: #eaf2f7; background: #10141d; -webkit-font-smoothing: antialiased; }
+         color: #eaf2f7; background: #0d1119; -webkit-font-smoothing: antialiased;
+         text-align: center; overflow-x: hidden; }
   a { color: #5ec4e4; }
-  .hero { background: radial-gradient(1200px 600px at 70% -10%, #1d3a52 0%, #16202e 45%, #10141d 100%);
-          padding: 72px 24px 56px; text-align: center; }
-  .hero img.logo { width: 130px; height: 130px; object-fit: contain;
-          filter: drop-shadow(0 12px 30px rgba(65,171,208,.35)); }
-  h1 { font-size: clamp(34px, 6vw, 52px); font-weight: 800; letter-spacing: -1px;
-       margin: 18px 0 6px; }
+
+  /* l'ambiente si immerge nel colore del capitolo corrente, come nell'app */
+  #ambiente { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(1100px 700px at 50% 12%,
+        color-mix(in srgb, var(--amb, #1f6f9c) 26%, transparent) 0%,
+        transparent 62%),
+      radial-gradient(900px 900px at 85% 90%,
+        color-mix(in srgb, var(--amb, #1f6f9c) 12%, transparent) 0%,
+        transparent 58%),
+      #0d1119;
+    transition: --amb .8s; }
+  @supports not (background: color-mix(in srgb, red 10%, blue)) {
+    #ambiente { background: #0d1119; }
+  }
+
+  /* ingresso morbido allo scorrimento */
+  .su { opacity: 0; transform: translateY(34px) scale(.985);
+        transition: opacity .8s cubic-bezier(.2,.7,.2,1),
+                    transform .8s cubic-bezier(.2,.7,.2,1); }
+  .su.qui { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .su { opacity: 1; transform: none; transition: none; }
+  }
+
+  .hero { padding: 84px 24px 46px; }
+  .hero img.logo { width: 132px; height: 132px; object-fit: contain;
+          filter: drop-shadow(0 12px 34px rgba(65,171,208,.4)); }
+  h1 { font-size: clamp(36px, 6.5vw, 58px); font-weight: 800;
+       letter-spacing: -1.2px; margin: 18px 0 8px; }
   h1 b { color: #5ec4e4; }
-  .claim { font-size: clamp(17px, 2.6vw, 21px); color: #aebfcc; max-width: 640px;
-           margin: 0 auto 30px; }
+  .claim { font-size: clamp(17px, 2.6vw, 22px); color: #b6c6d3;
+           max-width: 660px; margin: 0 auto 32px; }
   .cta { display: inline-block; font-size: 17px; font-weight: 700; color: #fff;
-         text-decoration: none; padding: 15px 42px; border-radius: 28px;
+         text-decoration: none; padding: 15px 44px; border-radius: 28px;
          background: linear-gradient(135deg, #41abd0, #1f6f9c 70%);
-         box-shadow: 0 10px 30px rgba(31,111,156,.45); }
-  .cta:hover { filter: brightness(1.07); }
-  .req { color: #7d8fa0; font-size: 13px; margin-top: 14px; }
-  .shot { max-width: 1060px; margin: -8px auto 0; padding: 0 24px 64px; }
-  .shot img { width: 100%; border-radius: 14px; display: block;
-              box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08); }
-  section { max-width: 1000px; margin: 0 auto; padding: 26px 24px 60px; }
-  h2 { font-size: 27px; letter-spacing: -.4px; margin-bottom: 8px; }
-  .sotto { color: #aebfcc; margin-bottom: 32px; max-width: 640px; }
-  .griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-             gap: 16px; }
-  .f { background: #161d29; border: 1px solid rgba(255,255,255,.07);
-       border-radius: 14px; padding: 20px 22px; }
-  .f h3 { font-size: 16.5px; margin-bottom: 6px; }
-  .f p { color: #aebfcc; font-size: 14.5px; }
-  .f .em { font-size: 22px; margin-bottom: 10px; display: block; }
-  .onesta { background: #131a25; border-top: 1px solid rgba(255,255,255,.06);
-            border-bottom: 1px solid rgba(255,255,255,.06); }
-  .onesta section { padding-top: 56px; }
-  .patti { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-           gap: 14px; }
-  .p { border-left: 3px solid #41abd0; padding: 4px 0 4px 16px; }
-  .p b { display: block; margin-bottom: 3px; }
-  .p span { color: #aebfcc; font-size: 14.5px; }
-  footer { text-align: center; color: #7d8fa0; font-size: 13.5px; padding: 44px 24px 56px; }
+         box-shadow: 0 10px 34px rgba(31,111,156,.5);
+         transition: transform .25s, box-shadow .25s; }
+  .cta:hover { transform: translateY(-2px);
+               box-shadow: 0 16px 44px rgba(31,111,156,.6); }
+  .req { color: #7d8fa0; font-size: 13px; margin-top: 15px; }
+
+  .shot { max-width: 1080px; margin: 26px auto 0; padding: 0 24px 30px; }
+  .shot img { width: 100%; border-radius: 16px; display: block;
+              box-shadow: 0 34px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08); }
+
+  .intro { max-width: 720px; margin: 0 auto; padding: 72px 24px 8px; }
+  .intro h2 { font-size: clamp(26px, 4.5vw, 40px); letter-spacing: -.6px; }
+  .intro p { color: #b6c6d3; margin-top: 12px; font-size: 17px; }
+
+  /* capitoli: una funzione per schermata, ognuna col colore della sua
+     sezione nell'app */
+  .cap { min-height: 74vh; display: flex; flex-direction: column;
+         justify-content: center; align-items: center;
+         padding: 64px 24px; }
+  .cap .anello { width: 96px; height: 96px; border-radius: 30px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 44px; margin-bottom: 26px;
+    background: linear-gradient(160deg,
+      color-mix(in srgb, var(--sc) 82%, #fff 14%),
+      color-mix(in srgb, var(--sc) 70%, #000 20%));
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--sc) 16%, transparent),
+      0 18px 50px color-mix(in srgb, var(--sc) 45%, transparent); }
+  .cap h2 { font-size: clamp(28px, 5vw, 46px); font-weight: 800;
+    letter-spacing: -.8px; margin-bottom: 14px;
+    background: linear-gradient(180deg, #fff,
+      color-mix(in srgb, var(--sc) 55%, #fff 30%));
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .cap p { color: #b6c6d3; font-size: clamp(16px, 2.2vw, 19px);
+           max-width: 560px; }
+  .cap .filo { width: 54px; height: 4px; border-radius: 2px; margin-top: 26px;
+    background: color-mix(in srgb, var(--sc) 80%, #fff 10%);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--sc) 70%, transparent); }
+
+  .onesta { padding: 90px 24px; }
+  .onesta h2 { font-size: clamp(26px, 4.5vw, 40px); letter-spacing: -.6px; }
+  .onesta .sotto { color: #b6c6d3; margin: 12px auto 40px; max-width: 620px; }
+  .patti { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+           gap: 16px; max-width: 1020px; margin: 0 auto; }
+  .p { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.08);
+       border-top: 3px solid #41abd0; border-radius: 14px; padding: 22px 20px; }
+  .p b { display: block; margin-bottom: 6px; font-size: 16.5px; }
+  .p span { color: #b6c6d3; font-size: 14.5px; }
+
+  .finale { padding: 80px 24px 90px; }
+  .finale h2 { font-size: clamp(26px, 4.5vw, 40px); letter-spacing: -.6px;
+               margin-bottom: 10px; }
+  .finale p { color: #b6c6d3; margin-bottom: 30px; }
+
+  footer { color: #7d8fa0; font-size: 13.5px; padding: 40px 24px 56px;
+           border-top: 1px solid rgba(255,255,255,.06); }
   footer .marchio { color: #eaf2f7; font-weight: 700; font-size: 15px; }
   footer .marchio b { color: #5ec4e4; }
 </style>
 </head>
 <body>
 
-<div class="hero">
+<div id="ambiente"></div>
+
+<div class="hero su qui" data-amb="#1f6f9c">
   <img class="logo" src="img/logo.png" alt="Bayran Cleaner">
   <h1><b>Bayran</b> Cleaner</h1>
   <p class="claim">Libera spazio sul tuo Mac, senza trucchi.<br>
@@ -63,42 +122,81 @@
   <div class="req">Versione 3.2.0 · Mac con chip Apple · Verificata da Apple (notarizzata)</div>
 </div>
 
-<div class="shot"><img src="img/panoramica.png" alt="La Panoramica di Bayran Cleaner"></div>
+<div class="shot su" data-amb="#1f6f9c">
+  <img src="img/panoramica.png" alt="La Panoramica di Bayran Cleaner">
+</div>
 
-<section>
-  <h2>Tutto quello che serve. Niente che non serva.</h2>
-  <p class="sotto">Otto strumenti mirati, una promessa sola: ti mostriamo cosa
-  occupa spazio e decidi tu, voce per voce.</p>
-  <div class="griglia">
-    <div class="f"><span class="em">🧹</span><h3>Pulizia mirata</h3>
-      <p>Cache delle app, log, allegati di Mail, installer dimenticati,
-      vecchi aggiornamenti di iPhone: ogni voce spiega cosa fa e quanto pesa.</p></div>
-    <div class="f"><span class="em">📦</span><h3>Disinstallazione completa</h3>
-      <p>Rimuove le app con tutti i loro dati nascosti, e trova i residui
-      di quelle già eliminate.</p></div>
-    <div class="f"><span class="em">🔄</span><h3>Aggiornamenti automatici delle app</h3>
-      <p>Rileva le app da aggiornare, scarica dal canale ufficiale del
-      produttore, verifica la firma e installa. Un clic.</p></div>
-    <div class="f"><span class="em">👯</span><h3>Duplicati veri</h3>
-      <p>Confronto byte per byte: zero falsi positivi. Scegli tu quale copia
-      tenere, gruppo per gruppo.</p></div>
-    <div class="f"><span class="em">🗺️</span><h3>Mappa del disco</h3>
-      <p>Le cartelle ordinate per peso, esplorabili al clic, con misura
-      progressiva istantanea.</p></div>
-    <div class="f"><span class="em">🔐</span><h3>Privacy dei browser</h3>
-      <p>Cronologia, cookie e cache di Safari, Chrome e Firefox.
-      Password e moduli non vengono mai toccati.</p></div>
-    <div class="f"><span class="em">⚡</span><h3>Avvio e manutenzione</h3>
-      <p>Gestisci le app che partono da sole e le attività di manutenzione
-      standard di macOS, spiegate una per una.</p></div>
-    <div class="f"><span class="em">📊</span><h3>Monitor di sistema</h3>
-      <p>Processore, memoria, disco, rete e batteria nel menu della barra,
-      quando li vuoi tu.</p></div>
-  </div>
+<div class="intro su" data-amb="#41abd0">
+  <h2>Tutto quello che serve.<br>Niente che non serva.</h2>
+  <p>Otto strumenti mirati, una promessa sola: ti mostriamo cosa occupa
+  spazio e decidi tu, voce per voce.</p>
+</div>
+
+<section class="cap su" style="--sc:#2e9e5b" data-amb="#2e9e5b">
+  <div class="anello">🧹</div>
+  <h2>Pulizia mirata</h2>
+  <p>Cache delle app, log, allegati di Mail, installer dimenticati, vecchi
+  aggiornamenti di iPhone: ogni voce spiega cosa fa e quanto pesa.</p>
+  <div class="filo"></div>
 </section>
 
-<div class="onesta">
-<section>
+<section class="cap su" style="--sc:#7c5cbf" data-amb="#7c5cbf">
+  <div class="anello">📦</div>
+  <h2>Disinstallazione completa</h2>
+  <p>Rimuove le app con tutti i loro dati nascosti, e trova i residui
+  di quelle già eliminate.</p>
+  <div class="filo"></div>
+</section>
+
+<section class="cap su" style="--sc:#c94f7c" data-amb="#c94f7c">
+  <div class="anello">🔄</div>
+  <h2>Aggiornamenti automatici</h2>
+  <p>Rileva le app da aggiornare, scarica dal canale ufficiale del
+  produttore, verifica la firma e installa. Un clic.</p>
+  <div class="filo"></div>
+</section>
+
+<section class="cap su" style="--sc:#12a29a" data-amb="#12a29a">
+  <div class="anello">👯</div>
+  <h2>Duplicati veri</h2>
+  <p>Confronto byte per byte: zero falsi positivi. Scegli tu quale copia
+  tenere, gruppo per gruppo.</p>
+  <div class="filo"></div>
+</section>
+
+<section class="cap su" style="--sc:#4778c4" data-amb="#4778c4">
+  <div class="anello">🗺️</div>
+  <h2>Mappa Disco</h2>
+  <p>Le cartelle ordinate per peso, esplorabili al clic, con misura
+  progressiva istantanea.</p>
+  <div class="filo"></div>
+</section>
+
+<section class="cap su" style="--sc:#c05b8c" data-amb="#c05b8c">
+  <div class="anello">🔐</div>
+  <h2>Privacy dei browser</h2>
+  <p>Cronologia, cookie e cache di Safari, Chrome e Firefox.
+  Password e moduli non vengono mai toccati.</p>
+  <div class="filo"></div>
+</section>
+
+<section class="cap su" style="--sc:#c7871a" data-amb="#c7871a">
+  <div class="anello">⚡</div>
+  <h2>Avvio e manutenzione</h2>
+  <p>Gestisci le app che partono da sole e le attività di manutenzione
+  standard di macOS, spiegate una per una.</p>
+  <div class="filo"></div>
+</section>
+
+<section class="cap su" style="--sc:#4a9cc4" data-amb="#4a9cc4">
+  <div class="anello">📊</div>
+  <h2>Monitor di sistema</h2>
+  <p>Processore, memoria, disco, rete e batteria nel menu della barra,
+  quando li vuoi tu.</p>
+  <div class="filo"></div>
+</section>
+
+<div class="onesta su" data-amb="#41abd0">
   <h2>Il patto di onestà</h2>
   <p class="sotto">Un programma di pulizia lavora sui tuoi file. Per questo
   Bayran Cleaner segue regole fisse, senza eccezioni.</p>
@@ -113,7 +211,12 @@
       diciamo; se non c'è nulla da pulire, lo diciamo. Nessuna "minaccia
       trovata" a effetto.</span></div>
   </div>
-</section>
+</div>
+
+<div class="finale su" data-amb="#1f6f9c">
+  <h2>Pronto a fare spazio?</h2>
+  <p>Gratuito, firmato e verificato da Apple. Si aggiorna da solo.</p>
+  <a class="cta" href="BayranCleaner-3.2.0.dmg">Scarica gratis</a>
 </div>
 
 <footer>
@@ -121,6 +224,29 @@
   <p>Assistenza: <a href="mailto:bayranlabsoftware@gmail.com">bayranlabsoftware@gmail.com</a></p>
   <p>© 2026 BayranLab Software. Tutti i diritti riservati.</p>
 </footer>
+
+<script>
+// ingresso morbido dei blocchi + ambiente immerso nel colore del capitolo
+const amb = document.getElementById("ambiente");
+const oss = new IntersectionObserver(voci => {
+  for (const v of voci) {
+    if (v.isIntersecting) {
+      v.target.classList.add("qui");
+      const c = v.target.dataset.amb;
+      if (c) amb.style.setProperty("--amb", c);
+    }
+  }
+}, { threshold: 0.45 });
+document.querySelectorAll(".su").forEach(el => oss.observe(el));
+// il glow segue anche a ritroso: osservatore dedicato più permissivo
+const oss2 = new IntersectionObserver(voci => {
+  let migliore = null;
+  for (const v of voci) if (v.isIntersecting) migliore = v;
+  if (migliore?.target.dataset.amb)
+    amb.style.setProperty("--amb", migliore.target.dataset.amb);
+}, { threshold: 0.55 });
+document.querySelectorAll("[data-amb]").forEach(el => oss2.observe(el));
+</script>
 
 </body>
 </html>

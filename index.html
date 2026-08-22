@@ -39,7 +39,7 @@
     .su { opacity: 1; transform: none; transition: none; }
   }
 
-  .hero { padding: 84px 24px 46px; }
+  .hero { padding: 84px 24px 40px; }
   .hero img.logo { width: 132px; height: 132px; object-fit: contain;
           filter: drop-shadow(0 12px 34px rgba(65,171,208,.4)); }
   h1 { font-size: clamp(36px, 6.5vw, 58px); font-weight: 800;
@@ -58,19 +58,37 @@
   .reqmini { color: #7d8fa0; font-size: 12.5px; letter-spacing: .2px;
              margin-bottom: 14px; }
 
-  .shot { max-width: 1080px; margin: 26px auto 0; padding: 0 24px 30px; }
-  .shot img { width: 100%; border-radius: 16px; display: block;
-              box-shadow: 0 34px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08); }
+  /* palcoscenico: la Panoramica cresce fino a riempire lo schermo mentre
+     scorri (scrubbing legato allo scroll), con le didascalie ai lati */
+  #palco { height: 340vh; position: relative; }
+  #palco .scena { position: sticky; top: 0; height: 100vh; overflow: hidden;
+    display: flex; align-items: center; justify-content: center; }
+  #palco img.tela { width: 100vw; height: 100vh; object-fit: contain;
+    transform: scale(.62); border-radius: 18px; will-change: transform;
+    filter: drop-shadow(0 40px 90px rgba(0,0,0,.55)); }
+  .dida { position: absolute; top: 50%; transform: translateY(-50%);
+    max-width: 240px; opacity: 0; will-change: opacity, transform; }
+  .dida b { display: block; font-size: 22px; letter-spacing: -.4px;
+            margin-bottom: 6px; }
+  .dida span { color: #b6c6d3; font-size: 14.5px; }
+  .dida.sx { left: 4vw; text-align: left; }
+  .dida.dx { right: 4vw; text-align: right; }
+  @media (max-width: 900px) { .dida { display: none; }
+                              #palco { height: 220vh; } }
+  @media (prefers-reduced-motion: reduce) {
+    #palco { height: auto; padding: 40px 0; }
+    #palco .scena { position: static; height: auto; }
+    #palco img.tela { transform: none; width: 92vw; height: auto; }
+    .dida { display: none; }
+  }
 
   .intro { max-width: 720px; margin: 0 auto; padding: 72px 24px 8px; }
   .intro h2 { font-size: clamp(26px, 4.5vw, 40px); letter-spacing: -.6px; }
   .intro p { color: #b6c6d3; margin-top: 12px; font-size: 17px; }
 
-  /* capitoli: una funzione per schermata, ognuna col colore della sua
-     sezione nell'app */
+  /* capitoli immersivi: solo i pezzi da novanta */
   .cap { min-height: 92vh; display: flex; flex-direction: column;
-         justify-content: center; align-items: center;
-         padding: 70px 24px; }
+         justify-content: center; align-items: center; padding: 70px 24px; }
   .cap .anello { width: 72px; height: 72px; border-radius: 22px;
     display: flex; align-items: center; justify-content: center;
     font-size: 34px; margin-bottom: 20px;
@@ -85,8 +103,7 @@
       color-mix(in srgb, var(--sc) 55%, #fff 30%));
     -webkit-background-clip: text; background-clip: text; color: transparent; }
   .cap p { color: #b6c6d3; font-size: clamp(16px, 2.2vw, 19px);
-           max-width: 620px; }
-  /* la schermata vera della sezione: entra in prospettiva e si raddrizza */
+           max-width: 640px; }
   .cap .schermo { max-width: 1060px; width: 100%; margin-top: 38px;
     perspective: 1400px; }
   .cap .schermo img { width: 100%; display: block; border-radius: 14px;
@@ -100,16 +117,50 @@
     .cap .schermo img { transform: none; opacity: 1; transition: none; }
   }
 
-  /* strumenti di contorno, in breve */
-  .extra { padding: 40px 24px 80px; }
-  .extra h2 { font-size: clamp(22px, 3.5vw, 30px); margin-bottom: 26px; }
-  .minis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-           gap: 16px; max-width: 900px; margin: 0 auto; }
-  .mini { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.08);
-          border-radius: 14px; padding: 24px 20px; }
-  .mini .em { font-size: 28px; display: block; margin-bottom: 10px; }
-  .mini b { display: block; margin-bottom: 5px; font-size: 16px; }
-  .mini span { color: #b6c6d3; font-size: 14.5px; }
+  /* una sola app: le categorie che sostituisce */
+  .unica { padding: 90px 24px 70px; }
+  .unica h2 { font-size: clamp(26px, 4.5vw, 40px); letter-spacing: -.6px; }
+  .unica .sotto { color: #b6c6d3; margin: 12px auto 40px; max-width: 640px; }
+  .sostituti { display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px; max-width: 1060px; margin: 0 auto; }
+  .sost { background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.08); border-radius: 14px;
+    padding: 22px 18px; }
+  .sost .em { font-size: 26px; display: block; margin-bottom: 10px; }
+  .sost b { display: block; font-size: 15.5px; margin-bottom: 4px; }
+  .sost span { color: #8fa2b2; font-size: 13.5px; }
+  .unica .morale { margin-top: 30px; font-size: clamp(17px, 2.4vw, 21px);
+    color: #eaf2f7; font-weight: 700; }
+  .unica .morale i { color: #5ec4e4; font-style: normal; }
+
+  /* esploratore a schede: tutte le sezioni, zero chilometri di scroll */
+  .esplora { padding: 60px 24px 90px; }
+  .esplora h2 { font-size: clamp(26px, 4.5vw, 40px); letter-spacing: -.6px;
+                margin-bottom: 10px; }
+  .esplora .sotto { color: #b6c6d3; margin: 0 auto 30px; max-width: 620px; }
+  .linguette { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+               max-width: 900px; margin: 0 auto 26px; }
+  .linguetta { border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05);
+    color: #d6e2ea; font: inherit; font-size: 14px; font-weight: 600;
+    padding: 8px 16px; border-radius: 20px; cursor: pointer;
+    transition: background .25s, box-shadow .25s, color .25s; }
+  .linguetta:hover { background: rgba(255,255,255,.1); }
+  .linguetta.attiva { color: #fff; border-color: transparent;
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--sc) 85%, #fff 10%),
+      color-mix(in srgb, var(--sc) 70%, #000 15%));
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--sc) 45%, transparent); }
+  .pannello { display: none; max-width: 1060px; margin: 0 auto; }
+  .pannello.attivo { display: block; animation: sfuma .45s ease; }
+  @keyframes sfuma { from { opacity: 0; transform: translateY(14px); }
+                     to { opacity: 1; transform: none; } }
+  .pannello p { color: #b6c6d3; max-width: 640px; margin: 0 auto 22px;
+                font-size: 16.5px; }
+  .pannello img { width: 100%; display: block; border-radius: 14px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5),
+      0 0 50px color-mix(in srgb, var(--sc) 22%, transparent),
+      0 0 0 1px rgba(255,255,255,.08); }
 
   .onesta { padding: 90px 24px; }
   .onesta h2 { font-size: clamp(26px, 4.5vw, 40px); letter-spacing: -.6px; }
@@ -156,21 +207,33 @@
   <div class="req">Versione 3.2.0 · Gratuito</div>
 </div>
 
-<div class="shot su" data-amb="#1f6f9c">
-  <img src="img/panoramica.png" alt="La Panoramica di Bayran Cleaner">
+<div id="palco" data-amb="#1f6f9c">
+  <div class="scena">
+    <img class="tela" src="img/panoramica.png" alt="La Panoramica di Bayran Cleaner">
+    <div class="dida sx" data-fin="0.10 0.42"><b>Scansiona</b>
+      <span>Otto sezioni analizzano il disco e ti mostrano cosa occupa spazio,
+      voce per voce.</span></div>
+    <div class="dida dx" data-fin="0.32 0.64"><b>Decidi tu</b>
+      <span>Niente rimozioni automatiche: ogni elemento va confermato,
+      e prima vedi l'elenco completo.</span></div>
+    <div class="dida sx" data-fin="0.55 0.88"><b>Sempre reversibile</b>
+      <span>Tutto finisce nel Cestino, annotato nel Registro:
+      ripristini qualsiasi cosa con un click.</span></div>
+  </div>
 </div>
 
 <div class="intro su" data-amb="#41abd0">
   <h2>Tutto quello che serve.<br>Niente che non serva.</h2>
-  <p>Otto strumenti mirati, una promessa sola: ti mostriamo cosa occupa
-  spazio e decidi tu, voce per voce.</p>
+  <p>Pulizia, manutenzione, monitoraggio e aggiornamenti: un solo strumento,
+  una promessa sola — ti mostriamo la verità e decidi tu.</p>
 </div>
 
 <section class="cap su" style="--sc:#2e9e5b" data-amb="#2e9e5b">
   <div class="anello">🧹</div>
   <h2>Pulizia generale</h2>
   <p>Cache delle app, log, allegati di Mail, installer dimenticati, vecchi
-  aggiornamenti di iPhone: ogni voce spiega cosa fa e quanto pesa.</p>
+  aggiornamenti di iPhone, file .DS_Store: ogni voce spiega cosa fa e
+  quanto pesa.</p>
   <div class="schermo"><img src="img/sez-pulizia.jpg" loading="lazy"
     alt="La sezione Pulizia generale di Bayran Cleaner"></div>
 </section>
@@ -180,46 +243,21 @@
   <h2>Applicazioni</h2>
   <p>Disinstallazione completa, dati nascosti inclusi, e residui delle app
   già eliminate. E quando c'è un aggiornamento, lo scarica dal canale
-  ufficiale del produttore, verifica la firma e installa. Un clic.</p>
+  ufficiale del produttore, ne verifica la firma e installa da solo —
+  con la barra di avanzamento e la versione precedente al sicuro nel
+  Cestino.</p>
   <div class="schermo"><img src="img/sez-applicazioni.jpg" loading="lazy"
     alt="La sezione Applicazioni di Bayran Cleaner"></div>
 </section>
 
-<section class="cap su" style="--sc:#1f7aa8" data-amb="#1f7aa8">
-  <div class="anello">⚙️</div>
-  <h2>Sviluppo</h2>
-  <p>Cache dei compilatori, build intermedie, simulatori, node_modules
-  orfani: i gigabyte invisibili di chi sviluppa, spiegati e recuperabili
-  senza rischi.</p>
-  <div class="schermo"><img src="img/sez-sviluppo.jpg" loading="lazy"
-    alt="La sezione Sviluppo di Bayran Cleaner"></div>
-</section>
-
-<section class="cap su" style="--sc:#12a29a" data-amb="#12a29a">
-  <div class="anello">👯</div>
-  <h2>Duplicati veri</h2>
-  <p>Confronto byte per byte: zero falsi positivi. Scegli tu quale copia
-  tenere, gruppo per gruppo.</p>
-  <div class="schermo"><img src="img/sez-duplicati.jpg" loading="lazy"
-    alt="La sezione Duplicati di Bayran Cleaner"></div>
-</section>
-
-<section class="cap su" style="--sc:#e0803a" data-amb="#e0803a">
-  <div class="anello">📄</div>
-  <h2>File grandi e vecchi</h2>
-  <p>I file più pesanti del disco e quelli dimenticati da mesi, subito
-  visibili. Solo segnalazione: nessuna rimozione automatica.</p>
-  <div class="schermo"><img src="img/sez-grandi.jpg" loading="lazy"
-    alt="La sezione File grandi e vecchi di Bayran Cleaner"></div>
-</section>
-
-<section class="cap su" style="--sc:#c05b8c" data-amb="#c05b8c">
-  <div class="anello">🔐</div>
-  <h2>Privacy dei browser</h2>
-  <p>Cronologia, cookie e cache di Safari, Chrome e Firefox.
-  Password e moduli non vengono mai toccati.</p>
-  <div class="schermo"><img src="img/sez-privacy.jpg" loading="lazy"
-    alt="La sezione Privacy di Bayran Cleaner"></div>
+<section class="cap su" style="--sc:#3d94a8" data-amb="#3d94a8">
+  <div class="anello">📈</div>
+  <h2>Il Mac, in diretta</h2>
+  <p>Chi sta usando processore e memoria, chi sta parlando con internet e
+  con quali server, come sta la batteria — aggiornato ogni due secondi.
+  E dal menu della barra, "Tieni sveglio il Mac" quando serve.</p>
+  <div class="schermo"><img src="img/sez-processi.jpg" loading="lazy"
+    alt="La sezione Processi di Bayran Cleaner"></div>
 </section>
 
 <section class="cap su" style="--sc:#4778c4" data-amb="#4778c4">
@@ -231,28 +269,36 @@
     alt="La Mappa Disco di Bayran Cleaner"></div>
 </section>
 
-<section class="cap su" style="--sc:#c7871a" data-amb="#c7871a">
-  <div class="anello">⚡</div>
-  <h2>App di avvio</h2>
-  <p>Le app e i servizi che partono da soli all'accensione: disattivarli
-  velocizza l'avvio e alleggerisce la memoria, senza disinstallare nulla.</p>
-  <div class="schermo"><img src="img/sez-avvio.jpg" loading="lazy"
-    alt="La sezione App di avvio di Bayran Cleaner"></div>
-</section>
-
-<div class="extra su" data-amb="#4a9cc4">
-  <h2>E intorno, tutto il resto</h2>
-  <div class="minis">
-    <div class="mini"><span class="em">📊</span><b>Monitor di sistema</b>
-      <span>Processore, memoria, disco, rete e batteria nel menu della
-      barra, quando li vuoi tu.</span></div>
-    <div class="mini"><span class="em">🔧</span><b>Manutenzione</b>
-      <span>Le attività standard di macOS, spiegate una per una ed
-      eseguite solo su tua richiesta.</span></div>
-    <div class="mini"><span class="em">↩️</span><b>Registro</b>
-      <span>Ogni operazione è annotata e reversibile: la vecchia versione
-      di qualunque cosa resta nel Cestino.</span></div>
+<div class="unica su" data-amb="#c94f7c">
+  <h2>Una sola app.</h2>
+  <p class="sotto">Per tenere in ordine un Mac di solito servono quattro o
+  cinque strumenti diversi. Bayran Cleaner li sostituisce tutti.</p>
+  <div class="sostituti">
+    <div class="sost"><span class="em">🧹</span><b>La pulizia in abbonamento</b>
+      <span>Scansione, disinstallazione, duplicati e file pesanti — senza
+      canone annuale e senza allarmi inventati.</span></div>
+    <div class="sost"><span class="em">🔧</span><b>L'utility di manutenzione</b>
+      <span>Spotlight, anteprime, cache dei font, verifica del disco:
+      spiegate in italiano e sempre reversibili.</span></div>
+    <div class="sost"><span class="em">📊</span><b>Il monitor di sistema</b>
+      <span>Processore, memoria, rete, batteria: nel menu della barra e in
+      tre schede dedicate, in tempo reale.</span></div>
+    <div class="sost"><span class="em">☕</span><b>L'anti-stop</b>
+      <span>"Tieni sveglio il Mac" per 30 minuti, 2 ore o a oltranza —
+      revocabile con un click.</span></div>
+    <div class="sost"><span class="em">🔄</span><b>E una cosa che non fa nessuno</b>
+      <span>Aggiorna le altre app da sola, verificando la firma del
+      produttore prima di installare.</span></div>
   </div>
+  <p class="morale">Una sola app. <i>Gratis.</i> E non ti racconta storie.</p>
+</div>
+
+<div class="esplora su" data-amb="#41abd0">
+  <h2>Esplora tutte le sezioni</h2>
+  <p class="sotto">Ogni schermata qui sotto è l'app vera, con dati veri.
+  Scegli una scheda.</p>
+  <div class="linguette" id="linguette"></div>
+  <div id="pannelli"></div>
 </div>
 
 <div class="onesta su" data-amb="#41abd0">
@@ -294,19 +340,15 @@
 </footer>
 
 <script>
-// ingresso morbido dei blocchi + ambiente immerso nel colore del capitolo
+// ambiente immerso + ingresso morbido dei blocchi
 const amb = document.getElementById("ambiente");
 const oss = new IntersectionObserver(voci => {
-  for (const v of voci) {
-    if (v.isIntersecting) {
-      v.target.classList.add("qui");
-      const c = v.target.dataset.amb;
-      if (c) amb.style.setProperty("--amb", c);
-    }
+  for (const v of voci) if (v.isIntersecting) {
+    v.target.classList.add("qui");
+    if (v.target.dataset.amb) amb.style.setProperty("--amb", v.target.dataset.amb);
   }
 }, { threshold: 0.45 });
 document.querySelectorAll(".su").forEach(el => oss.observe(el));
-// il glow segue anche a ritroso: osservatore dedicato più permissivo
 const oss2 = new IntersectionObserver(voci => {
   let migliore = null;
   for (const v of voci) if (v.isIntersecting) migliore = v;
@@ -314,6 +356,75 @@ const oss2 = new IntersectionObserver(voci => {
     amb.style.setProperty("--amb", migliore.target.dataset.amb);
 }, { threshold: 0.55 });
 document.querySelectorAll("[data-amb]").forEach(el => oss2.observe(el));
+
+// palcoscenico: scrubbing legato allo scroll — l'immagine cresce fino a
+// riempire lo schermo, le didascalie entrano ed escono nelle loro finestre
+const palco = document.getElementById("palco");
+const tela = palco.querySelector(".tela");
+const dide = [...palco.querySelectorAll(".dida")].map(d => {
+  const [a, b] = d.dataset.fin.split(" ").map(Number);
+  return { el: d, a, b, sx: d.classList.contains("sx") };
+});
+const fermo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function scrub() {
+  if (fermo) return;
+  const r = palco.getBoundingClientRect();
+  const corsa = r.height - innerHeight;
+  const prog = Math.min(1, Math.max(0, -r.top / corsa));
+  const s = 0.62 + prog * 0.38;
+  tela.style.transform = `scale(${s})`;
+  tela.style.borderRadius = `${Math.round(18 * (1 - prog))}px`;
+  for (const d of dide) {
+    const centro = (d.a + d.b) / 2, meta = (d.b - d.a) / 2;
+    const vic = 1 - Math.min(1, Math.abs(prog - centro) / meta);
+    d.el.style.opacity = Math.max(0, vic * 1.4 - 0.2).toFixed(2);
+    const spinta = (1 - vic) * 26 * (d.sx ? -1 : 1);
+    d.el.style.transform = `translateY(-50%) translateX(${spinta.toFixed(1)}px)`;
+  }
+}
+let attesa = false;
+addEventListener("scroll", () => {
+  if (attesa) return;
+  attesa = true;
+  requestAnimationFrame(() => { scrub(); attesa = false; });
+}, { passive: true });
+addEventListener("resize", scrub);
+scrub();
+
+// esploratore a schede: tutte le sezioni dell'app, cambio sul posto
+const SEZIONI = [
+  ["sviluppo", "Sviluppo", "#1f7aa8", "Cache dei compilatori, build intermedie, simulatori, node_modules orfani: i gigabyte invisibili di chi sviluppa, recuperabili senza rischi."],
+  ["duplicati", "Duplicati", "#12a29a", "Copie identiche verificate byte per byte: zero falsi positivi. Scegli tu quale copia tenere, gruppo per gruppo."],
+  ["grandi", "File grandi e vecchi", "#e0803a", "I file più pesanti del disco e quelli dimenticati da mesi. Solo segnalazione: nessuna rimozione automatica."],
+  ["privacy", "Privacy", "#c05b8c", "Cronologia, cookie e cache di Safari, Chrome e Firefox, più gli elenchi Recenti di macOS. Password e moduli mai toccati."],
+  ["rete", "Rete", "#a05bc0", "Chi sta parlando con internet, con quali server e a che velocità. Solo osservazione, nessun blocco."],
+  ["batteria", "Batteria", "#d0a03e", "Carica, tempo residuo, potenza, temperatura, cicli e capacità — come li riferisce il Mac, senza stime inventate."],
+  ["avvio", "App di avvio", "#c7871a", "Le app e i servizi che partono da soli all'accensione: disattivarli velocizza l'avvio, senza disinstallare nulla."],
+  ["manutenzione", "Manutenzione", "#66739c", "Dieci attività standard di macOS — Spotlight, anteprime, font, verifica disco, SMART, snapshot — spiegate una per una."],
+  ["regolazioni", "Regolazioni", "#8b79a8", "Interruttori utili di sistema: file nascosti, estensioni, Dock, screenshot, Power Nap. Tutti reversibili."],
+];
+const linguette = document.getElementById("linguette");
+const pannelli = document.getElementById("pannelli");
+for (const [id, nome, colore, testo] of SEZIONI) {
+  linguette.insertAdjacentHTML("beforeend",
+    `<button class="linguetta" data-sez="${id}" style="--sc:${colore}">${nome}</button>`);
+  pannelli.insertAdjacentHTML("beforeend",
+    `<div class="pannello" id="pan-${id}" style="--sc:${colore}">
+       <p>${testo}</p>
+       <img src="img/sez-${id}.jpg" loading="lazy" alt="La sezione ${nome} di Bayran Cleaner">
+     </div>`);
+}
+function mostraSezione(id) {
+  document.querySelectorAll(".linguetta").forEach(b =>
+    b.classList.toggle("attiva", b.dataset.sez === id));
+  document.querySelectorAll(".pannello").forEach(p =>
+    p.classList.toggle("attivo", p.id === "pan-" + id));
+}
+linguette.addEventListener("click", e => {
+  const b = e.target.closest(".linguetta");
+  if (b) mostraSezione(b.dataset.sez);
+});
+mostraSezione("duplicati");
 </script>
 
 </body>

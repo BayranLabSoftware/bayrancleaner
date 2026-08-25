@@ -1,5 +1,5 @@
 {
-  "versione": "3.4.0",
-  "note": "Monitoraggio in tempo reale di processi, rete e batteria; manutenzione completa; regolazioni di sistema; aggiornamenti senza trascinamenti e barre di avanzamento.",
-  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranCleaner-3.4.0.dmg"
+  "versione": "3.4.1",
+  "note": "Elenchi completi e scorribili in ogni sezione, con ricerca fra i processi e ordinamento per nome o data. Gli elementi di avvio si spengono e si riaccendono senza sparire dall'elenco. Le cartelle duplicate si vedono come una riga sola invece che come centinaia di file. Il ripristino riporta tutto alla posizione esatta, sottocartelle comprese. Manutenzione piu' robusta e disinstallazione piu' trasparente.",
+  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranCleaner-3.4.1.dmg"
 }

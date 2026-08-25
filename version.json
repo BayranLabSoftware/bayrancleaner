@@ -1,5 +1,5 @@
 {
-  "versione": "3.4.2",
-  "note": "La memoria utilizzata ora coincide con quella di Monitoraggio Attività: prima contava anche i file tenuti in cache, che macOS libera appena servono. Dalla 3.4.1: elenchi completi e scorribili in ogni sezione, ricerca fra i processi, ordinamento per nome o data, elementi di avvio che si spengono e si riaccendono restando in elenco, cartelle duplicate raccolte in una riga sola, e ripristino che riporta ogni cosa alla posizione esatta, sottocartelle comprese.",
-  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranCleaner-3.4.2.dmg"
+  "versione": "3.4.3",
+  "note": "Correzione per chi lavora con nomi di cartella molto lunghi: nella sezione Duplicati la riga si schiacciava e i percorsi uscivano scritti in verticale, una lettera per riga. Ora le due posizioni sono numerate, i pulsanti hanno larghezza costante e le righe vanno a capo quando la finestra è stretta. Dalla 3.4.2: la memoria utilizzata coincide con quella di Monitoraggio Attività.",
+  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranCleaner-3.4.3.dmg"
 }

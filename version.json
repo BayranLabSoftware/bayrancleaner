@@ -1,5 +1,5 @@
 {
-  "versione": "3.4.8",
-  "note": "La casella di ricerca teneva solo la prima lettera: ora si può scrivere una parola intera, in tutte le sezioni. In Processi la memoria si legge davvero — intestazioni di colonna, quanta RAM usa ogni processo in percentuale, e in cima quanta ne è occupata in tutto, divisa fra app, sistema e memoria compressa. Chiudendo la finestra l'app ora sparisce dal Dock e resta nella barra dei menu in alto, da dove si riapre e si esce.",
-  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranCleaner-3.4.8.dmg"
+  "versione": "3.5.0",
+  "note": "Nuova scheda Firewall: accendi quello di macOS e vedi, programma per programma, chi sta aspettando connessioni dall'esterno e chi è davvero raggiungibile dalla rete. La scheda Rete adesso dice con chi parla ogni app, quanto, e chi c'è dietro ogni indirizzo. E la barra laterale usa tutta l'altezza della finestra invece di lasciarne vuota una parte in fondo.",
+  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranCleaner-3.5.0.dmg"
 }

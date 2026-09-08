@@ -191,6 +191,35 @@
            border-top: 1px solid rgba(255,255,255,.06); }
   footer .marchio { color: #eaf2f7; font-weight: 700; font-size: 15px; }
   footer .marchio b { color: #5ec4e4; }
+  footer a { color: #5ec4e4; }
+  .flegale { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center;
+             margin: 10px 0 0; }
+  .flink { background: none; border: 0; padding: 0; font: inherit; color: #5ec4e4;
+           cursor: pointer; text-decoration: underline; }
+
+  /* Pannello cookie: stesso impianto della pagina di Bayran Office, colori di
+     questa. Non chiede consensi perche' non ci sono cookie da consentire. */
+  .cookiewrap { position: fixed; inset: 0; z-index: 90; display: flex;
+                align-items: center; justify-content: center; padding: 22px;
+                background: rgba(3,12,20,.62); }
+  .cookiewrap[hidden] { display: none; }
+  .cookiepanel { background: #10222e; color: #eaf2f7; border-radius: 16px;
+                 max-width: 420px; width: 100%; padding: 26px 26px 20px;
+                 border: 1px solid rgba(255,255,255,.12);
+                 box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+  .cookiepanel h2 { font-size: 19px; font-weight: 800; margin: 0 0 14px; }
+  .cookielist { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 8px; }
+  .cookielist li { display: flex; align-items: center; gap: 10px; font-size: 14.5px; }
+  .cookielist b { min-width: 26px; height: 26px; border-radius: 8px; flex: 0 0 auto;
+                  background: rgba(94,196,228,.18); color: #5ec4e4;
+                  display: inline-flex; align-items: center; justify-content: center;
+                  font-size: 13px; }
+  .cookiefoot { display: flex; align-items: center; justify-content: space-between;
+                gap: 14px; flex-wrap: wrap; }
+  .cookiefoot a { color: #5ec4e4; font-weight: 600; }
+  .cookieok { background: #1f7aa8; color: #fff; border: 0; border-radius: 10px;
+              padding: 10px 24px; font: inherit; font-weight: 700; cursor: pointer; }
+  .cookieok:hover { filter: brightness(1.1); }
 </style>
 </head>
 <body>
@@ -336,10 +365,49 @@
 <footer>
   <div class="marchio"><b>Bayran</b>Lab Software</div>
   <p>Assistenza: <a href="mailto:bayranlabsoftware@gmail.com">bayranlabsoftware@gmail.com</a></p>
+  <p class="flegale">
+    <!-- L'informativa di Bayran Cleaner e' sua: descrive cosa legge l'app sul
+         Mac e quando usa la rete. Quella del sito e' un'altra cosa e sta
+         altrove. -->
+    <a href="privacy/">Privacy policy — Bayran Cleaner</a>
+    <button type="button" class="flink" id="cookiebtn">Cookie</button>
+    <a href="https://bayranlabsoftware.github.io/">BayranLab Software</a>
+  </p>
   <p>© 2026 BayranLab Software. Tutti i diritti riservati.</p>
 </footer>
 
+<div class="cookiewrap" id="cookiewrap" hidden>
+  <div class="cookiepanel" role="dialog" aria-modal="true" aria-labelledby="cookieh">
+    <h2 id="cookieh">Nessun cookie · Nessun tracciamento</h2>
+    <ul class="cookielist">
+      <li><b>0</b> cookie</li>
+      <li><b>0</b> localStorage · sessionStorage</li>
+      <li><b>0</b> analytics</li>
+      <li><b>0</b> richieste a terze parti</li>
+    </ul>
+    <div class="cookiefoot">
+      <a href="privacy/">Privacy policy</a>
+      <button type="button" class="cookieok" id="cookieok">OK</button>
+    </div>
+  </div>
+</div>
+
 <script>
+/* Pannello cookie. Si apre dal footer e non da solo: un avviso che compare
+   da solo dovrebbe poi ricordarsi di essere stato chiuso, e per ricordarlo
+   dovrebbe scrivere nel browser proprio l'unico dato che qui non si scrive. */
+(function pannelloCookie() {
+  const w = document.getElementById("cookiewrap");
+  const apri = () => { w.hidden = false; document.getElementById("cookieok").focus(); };
+  const chiudi = () => { w.hidden = true; document.getElementById("cookiebtn").focus(); };
+  document.getElementById("cookiebtn").addEventListener("click", apri);
+  document.getElementById("cookieok").addEventListener("click", chiudi);
+  w.addEventListener("click", e => { if (e.target === w) chiudi(); });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !w.hidden) chiudi();
+  });
+})();
+
 // ambiente immerso + ingresso morbido dei blocchi
 const amb = document.getElementById("ambiente");
 const oss = new IntersectionObserver(voci => {

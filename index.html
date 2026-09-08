@@ -39,6 +39,25 @@
     .su { opacity: 1; transform: none; transition: none; }
   }
 
+  /* Barra del marchio, identica per misure a quella della pagina di Bayran
+     Office: barra alta 68px, logo alto 46px, contenitore da 1080px con 22px
+     di margine. Cosi' il logo cade nello stesso punto passando da un sito
+     all'altro. Qui e' sovrapposta invece che fissa: la hero ha gia' 84px di
+     spazio in cima, quindi ci sta dentro senza spostare niente, e una barra
+     opaca su questo fondo scuro sarebbe stonata. */
+  .topbar { position: absolute; top: 0; left: 0; right: 0; z-index: 20;
+            height: 68px; display: flex; align-items: center; }
+  /* wrap e brand entrambi flex, non inline: la pagina di Cleaner e' centrata,
+     e un elemento in linea si faceva centrare con tutto il resto invece di
+     restare a sinistra. Flex ignora text-align e toglie anche lo spazio sotto
+     la riga di testo, che spostava il logo di 4px in su rispetto a Office. */
+  .topbar .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 22px;
+                  display: flex; align-items: center; }
+  .topbar .brand { display: flex; align-items: center; text-decoration: none;
+                   transition: opacity .12s; }
+  .topbar .brand:hover { opacity: .78; }
+  .topbar .brand img { height: 46px; width: auto; display: block; }
+
   .hero { padding: 84px 24px 40px; }
   .hero img.logo { width: 132px; height: 132px; object-fit: contain;
           filter: drop-shadow(0 12px 34px rgba(65,171,208,.4)); }
@@ -225,6 +244,14 @@
 <body>
 
 <div id="ambiente"></div>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="BayranLab Software — torna alla pagina principale">
+      <img src="img/bayranlab-logo.png" alt="BayranLab Software">
+    </a>
+  </div>
+</header>
 
 <div class="hero su qui" data-amb="#1f6f9c">
   <img class="logo" src="img/logo.png" alt="Bayran Cleaner">

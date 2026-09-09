@@ -1,5 +1,6 @@
 {
-  "versione": "0.9.1",
-  "note": "Tre pagine nuove: Manutenzione, con i rimedi a quello che si inceppa — icone sbagliate, anteprime vecchie, ricerca che non trova, caratteri strani; Regolazioni, le impostazioni di Windows che servono davvero raccolte in un posto solo e spiegate; e Batteria. Nel Firewall adesso si creano regole: scegli un programma e decidi se bloccarlo o consentirlo, in entrata o in uscita. Ogni regola porta il nome di Bayran, e Bayran toglie soltanto quelle: le regole di Windows e dei programmi non le tocca. E lo spazio non si conta più due volte quando due programmi dichiarano la stessa cartella.",
-  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.1.zip"
+  "versione": "0.9.2",
+  "note": "Nuovo programma di installazione con interfaccia grafica, in italiano e in inglese, con selezione della lingua e della cartella di destinazione. Nella scheda Firewall è ora possibile creare regole in entrata e in uscita per un singolo programma: le regole create da Bayran ne riportano il nome e sono le uniche che Bayran rimuove. Le modifiche in attesa possono essere annullate singolarmente. Icona dell'applicazione aggiornata.",
+  "note_en": "New graphical installer, available in Italian and English, with language and destination folder selection. The Firewall page can now create inbound and outbound rules for a single application: rules created by Bayran carry its name and are the only ones Bayran removes. Pending changes can now be cancelled individually. Updated application icon.",
+  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.2.zip"
 }

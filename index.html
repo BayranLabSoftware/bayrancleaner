@@ -74,6 +74,15 @@
   .cta:hover { transform: translateY(-2px);
                box-shadow: 0 16px 44px rgba(31,111,156,.6); }
   .req { color: #7d8fa0; font-size: 13px; margin-top: 15px; }
+  /* I due tasti su una riga sola, e a capo insieme su schermo stretto invece
+     di restare incollati da uno spazio di testo. */
+  .tasti { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  /* L'altro sistema e' un'alternativa, non la scelta principale: stessa forma,
+     peso diverso. */
+  .cta.altro { background: none; box-shadow: none; color: #5ec4e4;
+               border: 1px solid rgba(94,196,228,.42); padding: 14px 34px; }
+  .cta.altro:hover { box-shadow: none; border-color: #5ec4e4;
+                     background: rgba(94,196,228,.08); }
   .reqmini { color: #7d8fa0; font-size: 12.5px; letter-spacing: .2px;
              margin-bottom: 14px; }
 
@@ -288,7 +297,10 @@
   <p class="claim">Libera spazio sul tuo Mac, senza trucchi.<br>
   Tutto nel Cestino, sempre reversibile — e i numeri che vedi sono quelli veri.</p>
   <div class="reqmini">macOS 26 o successivo · Mac con chip Apple · 10 MB</div>
-  <a class="cta" href="BayranCleaner-3.5.0.dmg">Scarica gratis</a>
+  <div class="tasti">
+    <a class="cta" href="BayranCleaner-3.5.0.dmg">Scarica gratis</a>
+    <a class="cta altro" href="../bayranwincleaner/">Versione Windows</a>
+  </div>
   <div class="req">Versione 3.5.0 · Gratuito</div>
 </div>
 
@@ -406,7 +418,10 @@
 <div class="finale su" data-amb="#1f6f9c">
   <h2>Pronto a fare spazio?</h2>
   <p>Gratuito, firmato e verificato da Apple. Si aggiorna da solo.</p>
-  <a class="cta" href="BayranCleaner-3.5.0.dmg">Scarica gratis</a>
+  <div class="tasti">
+    <a class="cta" href="BayranCleaner-3.5.0.dmg">Scarica gratis</a>
+    <a class="cta altro" href="../bayranwincleaner/">Versione Windows</a>
+  </div>
   <div class="requisiti">
     <h3>Requisiti di sistema</h3>
     <ul>

@@ -1,6 +1,0 @@
-{
-  "versione": "0.9.3",
-  "note": "Canale di PROVA. Non e' il canale pubblico: serve a esercitare l'aggiornamento automatico prima di pubblicarlo. Si cancella subito dopo.",
-  "note_en": "TEST channel. Not the public channel: it exists to exercise the automatic update before publishing it. Removed right afterwards.",
-  "url": "https://raw.githubusercontent.com/BayranLabSoftware/bayrancleaner/main/BayranWinCleaner-0.9.3.zip"
-}

@@ -1,0 +1,5 @@
+{
+  "versione": "0.9.1",
+  "note": "Tre pagine nuove: Manutenzione, con i rimedi a quello che si inceppa — icone sbagliate, anteprime vecchie, ricerca che non trova, caratteri strani; Regolazioni, le impostazioni di Windows che servono davvero raccolte in un posto solo e spiegate; e Batteria. Nel Firewall adesso si creano regole: scegli un programma e decidi se bloccarlo o consentirlo, in entrata o in uscita. Ogni regola porta il nome di Bayran, e Bayran toglie soltanto quelle: le regole di Windows e dei programmi non le tocca. E lo spazio non si conta più due volte quando due programmi dichiarano la stessa cartella.",
+  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.1.zip"
+}

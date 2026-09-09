@@ -1,6 +1,6 @@
 {
-  "versione": "0.9.3",
-  "note": "L'intera applicazione è ora disponibile in italiano e in inglese: la lingua si sceglie in Impostazioni e vale per tutte le schermate, comprese le finestre di conferma e i messaggi del motore. Tutti i testi sono stati riscritti per uniformarne il registro, e la lingua scelta determina anche il formato dei numeri e delle date.",
-  "note_en": "The entire application is now available in Italian and English: the language is chosen in Settings and applies to every screen, including confirmation dialogs and engine messages. All texts have been rewritten for a consistent register, and the chosen language also determines number and date formats.",
-  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.3.zip"
+  "versione": "0.9.4",
+  "note": "Nuovo programma di installazione: un unico eseguibile al posto del file batch e dello script che lo accompagnavano. Si occupa anche della rimozione, che compare in «Installazione applicazioni» come un normale disinstallatore e conserva i dati dell'utente. L'applicazione non cambia.",
+  "note_en": "New setup program: a single executable in place of the batch file and script that used to accompany it. It also handles removal, which now appears in «Installed apps» as an ordinary uninstaller and preserves user data. The application itself is unchanged.",
+  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.4.zip"
 }

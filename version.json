@@ -1,6 +1,6 @@
 {
-  "versione": "3.5.0",
-  "note": "Nuova scheda Firewall: consente di attivare il firewall di macOS e di vedere, programma per programma, quali sono in ascolto di connessioni dall'esterno e quali risultano effettivamente raggiungibili dalla rete. La scheda Rete indica ora con chi comunica ciascuna applicazione, in quale misura e a chi appartiene ogni indirizzo. La barra laterale utilizza l'intera altezza della finestra.",
-  "note_en": "New Firewall page: it turns on the macOS firewall and shows, application by application, which ones are listening for incoming connections and which are actually reachable from the network. The Network page now reports who each application communicates with, how much, and who each address belongs to. The sidebar uses the full height of the window.",
-  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranCleaner-3.5.0.dmg"
+  "versione": "3.6.0",
+  "note": "L'intera applicazione è ora disponibile in italiano e in inglese: la lingua si sceglie in Impostazioni e vale per tutte le schermate, comprese le finestre di conferma e i messaggi del motore. Tutti i testi sono stati riscritti per uniformarne il registro, e la lingua scelta determina anche il formato dei numeri e delle date.",
+  "note_en": "The entire application is now available in Italian and English: the language is chosen in Settings and applies to every screen, including confirmation dialogs and engine messages. All texts have been rewritten for a consistent register, and the chosen language also determines number and date formats.",
+  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranCleaner-3.6.0.dmg"
 }

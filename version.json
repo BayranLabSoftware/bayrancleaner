@@ -1,5 +1,6 @@
 {
   "versione": "3.5.0",
-  "note": "Nuova scheda Firewall: accendi quello di macOS e vedi, programma per programma, chi sta aspettando connessioni dall'esterno e chi è davvero raggiungibile dalla rete. La scheda Rete adesso dice con chi parla ogni app, quanto, e chi c'è dietro ogni indirizzo. E la barra laterale usa tutta l'altezza della finestra invece di lasciarne vuota una parte in fondo.",
+  "note": "Nuova scheda Firewall: consente di attivare il firewall di macOS e di vedere, programma per programma, quali sono in ascolto di connessioni dall'esterno e quali risultano effettivamente raggiungibili dalla rete. La scheda Rete indica ora con chi comunica ciascuna applicazione, in quale misura e a chi appartiene ogni indirizzo. La barra laterale utilizza l'intera altezza della finestra.",
+  "note_en": "New Firewall page: it turns on the macOS firewall and shows, application by application, which ones are listening for incoming connections and which are actually reachable from the network. The Network page now reports who each application communicates with, how much, and who each address belongs to. The sidebar uses the full height of the window.",
   "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranCleaner-3.5.0.dmg"
 }

@@ -74,6 +74,16 @@
   .cta:hover { transform: translateY(-2px);
                box-shadow: 0 16px 44px rgba(31,111,156,.6); }
   .req { color: #7d8fa0; font-size: 13px; margin-top: 15px; }
+  /* Chi arriva dal sistema sbagliato per questa pagina lo legge sotto i tasti:
+     da Windows trova la versione per Windows, da un telefono che serve un
+     computer. Dal Mac la riga non compare. La stessa riga, uguale, sta sulla
+     pagina di WinCleaner. */
+  .sistema { color: #b6c6d3; font-size: 13.5px; max-width: 520px;
+             margin: 14px auto 0; text-wrap: balance; }
+  .sistema[hidden] { display: none; }
+  .sistema a { color: #5ec4e4; text-decoration: none;
+               border-bottom: 1px solid rgba(94,196,228,.42); }
+  .sistema a:hover { border-color: #5ec4e4; }
   /* I due tasti su una riga sola, e a capo insieme su schermo stretto invece
      di restare incollati da uno spazio di testo. */
   .tasti { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
@@ -323,6 +333,31 @@
     <a class="cta altro" href="../bayranwincleaner/">Versione Windows</a>
   </div>
   <div class="req">Versione 3.5.0 · Gratuito</div>
+  <p class="sistema" id="sistema" hidden></p>
+  <script>
+  /* Il sistema di chi visita, da come il browser si presenta. Serve solo a
+     dare un'indicazione, mai a cambiare il download. Prima telefoni e tablet,
+     perche' l'iPad si presenta come un Mac e lo tradisce solo lo schermo a
+     tocco. ?sistema=mac|windows|telefono mostra un caso a scelta, per
+     vederlo in anteprima. */
+  (function () {
+    var ua = navigator.userAgent;
+    var sistema = new URLSearchParams(location.search).get("sistema")
+      || (/Android|iPhone|iPad|iPod|Mobile/i.test(ua)
+          || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? "telefono"
+        : /Windows/.test(ua) ? "windows"
+        : /Macintosh|Mac OS X/.test(ua) ? "mac" : "");
+    var riga = document.getElementById("sistema");
+    if (sistema === "windows") {
+      riga.innerHTML = 'Stai usando Windows: <a href="../bayranwincleaner/">Bayran WinCleaner per Windows è qui</a>.';
+    } else if (sistema === "telefono") {
+      riga.textContent = "Bayran Cleaner si installa su un Mac: apri questa pagina dal computer.";
+    } else {
+      return;
+    }
+    riga.hidden = false;
+  })();
+  </script>
 </div>
 
 <div id="palco" data-amb="#1f6f9c">

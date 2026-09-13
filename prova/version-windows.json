@@ -1,0 +1,8 @@
+{
+  "versione": "0.9.8",
+  "note": "Il pacchetto di installazione passa da 98 a 54 MB, e ogni file viene verificato durante l'installazione. Aggiunta la licenza d'uso.",
+  "note_en": "The installation package goes from 98 to 54 MB, and every file is verified during installation. A license agreement has been added.",
+  "url": "https://raw.githubusercontent.com/BayranLabSoftware/bayrancleaner/main/BayranWinCleaner-0.9.8.zip",
+  "sha256": "e7a238554d39f2cb287b657a5c82efe9feccfdf796415e6f039b8d1d6f7640fc",
+  "firma": "tdmaeynrI6ltmONByOUk9nKB4nKg8TyIVBqr4L16tU7NPdTqYc6N/G+Y/9dZb+X1oBjHNTBTErnVozQYXRV6iw=="
+}

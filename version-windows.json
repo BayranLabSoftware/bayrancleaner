@@ -1,8 +1,8 @@
 {
-  "versione": "0.9.7",
-  "note": "Il programma include ora tutti i componenti necessari, compreso il runtime .NET: non occorre installare altro. L'aggiornamento non può più lasciare un'installazione incompleta: la nuova versione sostituisce quella installata solo quando è pronta, e in caso di problemi la versione precedente resta utilizzabile.",
-  "note_en": "The application now includes every component it needs, including the .NET runtime: nothing else has to be installed. An update can no longer leave an incomplete installation: the new version replaces the installed one only when it is ready, and if a problem occurs the previous version remains usable.",
-  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.7.zip",
-  "sha256": "117991f1a29cb91567c179a4002cf17c43f4067cf7d5f629fa6e71aa783fc4b3",
-  "firma": "FFDAcpLRPS3/Ay90ZWWYuA4sXEtAG91GnjCVoro9V83xodiZIyuMlfARgDiTxZ0fP2FRCIiHArm5RPZqO5r8uA=="
+  "versione": "0.9.8",
+  "note": "Il pacchetto di installazione passa da 98 a 54 MB, e ogni file viene verificato durante l'installazione. Aggiunta la licenza d'uso.",
+  "note_en": "The installation package goes from 98 to 54 MB, and every file is verified during installation. A license agreement has been added.",
+  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.8.zip",
+  "sha256": "e7a238554d39f2cb287b657a5c82efe9feccfdf796415e6f039b8d1d6f7640fc",
+  "firma": "UiA9uabYD+eJAlaFK9kLl2Rd9g2EucdZSHZ7ztgOKuEhquvEds9KL2lpEL8tETec/X+7QX4fBhK2/DcfN+AyoQ=="
 }

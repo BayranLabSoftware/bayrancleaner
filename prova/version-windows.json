@@ -1,0 +1,8 @@
+{
+  "versione": "0.9.6",
+  "note": "Gli aggiornamenti vengono ora verificati con la firma digitale di BayranLab prima dell'installazione. Dopo la disinstallazione di un programma l'elenco si aggiorna da solo, senza ripetere l'analisi. Corretta la disinstallazione dei programmi installati con Windows Installer (MSI), che non si avviava. Dopo un aggiornamento automatico l'applicazione torna ad aprirsi da sola.",
+  "note_en": "Updates are now verified with BayranLab's digital signature before installation. After uninstalling a program the list now updates on its own, without running the analysis again. Fixed uninstalling programs installed with Windows Installer (MSI), which failed to start. After an automatic update the application reopens on its own again.",
+  "url": "https://raw.githubusercontent.com/BayranLabSoftware/bayrancleaner/main/BayranWinCleaner-0.9.6.zip",
+  "sha256": "fc9545b92473522eb81f9cbbf5048399fb50cdb8ba6f7851ae860a7cfc3b2d36",
+  "firma": "rgLA79HIXws0aEot6wTI5hu3fjk4CPCcHwDLUcHZiLTrGnEN++lZuoZcViY5V1s8u5YKGNMPkWxLBCI80BUEIw=="
+}

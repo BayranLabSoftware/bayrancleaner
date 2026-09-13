@@ -1,6 +1,6 @@
 {
-  "versione": "0.9.4",
-  "note": "Nuovo programma di installazione: un unico eseguibile al posto del file batch e dello script che lo accompagnavano. Si occupa anche della rimozione, che compare in «Installazione applicazioni» come un normale disinstallatore e conserva i dati dell'utente. L'applicazione non cambia.",
-  "note_en": "New setup program: a single executable in place of the batch file and script that used to accompany it. It also handles removal, which now appears in «Installed apps» as an ordinary uninstaller and preserves user data. The application itself is unchanged.",
-  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.4.zip"
+  "versione": "0.9.5",
+  "note": "Dopo la disinstallazione di un programma l'elenco si aggiorna da solo, senza ripetere l'analisi. Corretta la disinstallazione dei programmi installati con Windows Installer (MSI), che non si avviava. Dopo un aggiornamento automatico l'applicazione torna ad aprirsi da sola.",
+  "note_en": "After uninstalling a program the list now updates on its own, without running the analysis again. Fixed uninstalling programs installed with Windows Installer (MSI), which failed to start. After an automatic update the application reopens on its own again.",
+  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.5.zip"
 }

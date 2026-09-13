@@ -1,8 +1,0 @@
-{
-  "versione": "0.9.9",
-  "note": "Il programma è ora compilato in codice macchina: più protetto, e il download scende da 54 a 10 MB. Dai prossimi aggiornamenti non si apre più la finestra di PowerShell.",
-  "note_en": "The program is now compiled to native code: better protected, and the download drops from 54 to 10 MB. From the next update on, no PowerShell window opens.",
-  "url": "https://raw.githubusercontent.com/BayranLabSoftware/bayrancleaner/main/BayranWinCleaner-0.9.9.zip",
-  "sha256": "1e0c41d1743b7393a5054a46b3887694013269d79e72c543868a6d1b8775b336",
-  "firma": "iKxowvye5kjlDG4sNFNkM32zC4b/AJc8zkk4nqkI/Z4VLbrL8gm723NPm7dmnlQcUqFI8qug4hfZJwvsCw3amQ=="
-}

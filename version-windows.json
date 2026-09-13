@@ -1,8 +1,8 @@
 {
-  "versione": "0.9.8",
-  "note": "Il pacchetto di installazione passa da 98 a 54 MB, e ogni file viene verificato durante l'installazione. Aggiunta la licenza d'uso.",
-  "note_en": "The installation package goes from 98 to 54 MB, and every file is verified during installation. A license agreement has been added.",
-  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.8.zip",
-  "sha256": "e7a238554d39f2cb287b657a5c82efe9feccfdf796415e6f039b8d1d6f7640fc",
-  "firma": "UiA9uabYD+eJAlaFK9kLl2Rd9g2EucdZSHZ7ztgOKuEhquvEds9KL2lpEL8tETec/X+7QX4fBhK2/DcfN+AyoQ=="
+  "versione": "0.9.9",
+  "note": "Il programma è ora compilato in codice macchina: più protetto, e il download scende da 54 a 10 MB. Dai prossimi aggiornamenti non si apre più la finestra di PowerShell.",
+  "note_en": "The program is now compiled to native code: better protected, and the download drops from 54 to 10 MB. From the next update on, no PowerShell window opens.",
+  "url": "https://bayranlabsoftware.github.io/bayrancleaner/BayranWinCleaner-0.9.9.zip",
+  "sha256": "1e0c41d1743b7393a5054a46b3887694013269d79e72c543868a6d1b8775b336",
+  "firma": "PXEKN9i+HF1A1+mh1pOImsZZ6pL/SRVrnYXb5Fwj/4BsRlye/BoTN764v9WzBOLNzP2fjTswr7PezB7TbBoOMA=="
 }
